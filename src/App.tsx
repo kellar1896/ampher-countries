@@ -1,21 +1,28 @@
-import React, { useEffect } from "react";
-// import logo from "./logo.svg";
-// import { Counter } from "./features/counter/Counter";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import { HttpClient } from "./plugins/httpClient";
 import Header from "./components/organism/header";
 import CountriesTable from "./components/organism/countriesTable";
-// import Example from "./views/example";
+import { Country } from "./types";
+import MainTemplate from "./components/templates/mainTemplate";
+import CountryRepository from "./repositories/countries.Repository";
 
 const App = () => {
+  const [countries, setCountries] = useState([] as Country[]);
+  const instanceCountries = CountryRepository.getInstance();
+
   useEffect(() => {
-    HttpClient();
+    const getCountries = async () => {
+      setCountries(instanceCountries.filterCountries);
+    };
+    instanceCountries.addSubscription(()=>{getCountries()});
+    instanceCountries.getCountries();
   }, []);
   return (
     <div className="App">
-      {/* <Example /> */}
-      <Header />
-      <CountriesTable />
+      <MainTemplate
+        header={<Header />}
+        table={<CountriesTable countries={countries} />}
+      />
     </div>
   );
 };
