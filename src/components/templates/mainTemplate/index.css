@@ -1,0 +1,41 @@
+.main-template-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.header-template-container{
+    height: 20vh;
+}
+
+.main-body-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 50px;
+}
+
+.table-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 43.33%;
+    height: 100%;
+    padding: 5 5px;
+}
+
+.description-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 66.66%;
+    height: 100%;
+    padding: 5 5px;
+}
+
+.table-complete-container{
+    width: 100%;
+}
