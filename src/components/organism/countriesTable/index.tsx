@@ -1,42 +1,39 @@
 import { Table } from "antd";
 import React from "react";
+import { Country } from "../../../types";
+import CountryDescription from "../countryDescription";
+import "./index.css";
 
-const CountriesTable = () => {
-  const dataSource = [
-    {
-      key: "1",
-      name: "Mike",
-      age: 32,
-      address: "10 Downing Street",
-    },
-    {
-      key: "2",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-    },
-  ];
+type CountriesTableProps = {
+  countries: Country[];
+};
 
+const CountriesTable = ({ countries }: CountriesTableProps) => {
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
+      title: "Flag",
+      dataIndex: "flag",
+      key: "flag",
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
+      title: "Capital",
+      dataIndex: "capital",
+      key: "capital",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
+      title: "Region",
+      dataIndex: "region",
+      key: "region",
     },
   ];
   return (
-    <div>
-      <Table dataSource={dataSource} columns={columns} />
+    <div className="organism-container">
+      <div className="table-container-organism">
+        <Table dataSource={countries} columns={columns} scroll={{ y: 440 }} />
+      </div>
+      <div>
+        <CountryDescription />
+      </div>
     </div>
   );
 };
